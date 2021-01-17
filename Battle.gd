@@ -7,11 +7,13 @@ export(Array, PackedScene) var enemies = []
 onready var battleActionButtons = $UI/BattleActionButtons
 onready var animationPlayer = $AnimationPlayer
 onready var nextRoomButton = $UI/CenterContainer/NextRoomButton
+onready var levelUpButton = $UI/CenterContainer/LevelUpButton
 onready var enemyPosition = $EnemyPosition
 
 func _ready():
 	randomize()
 	nextRoomButton.hide()
+	levelUpButton.hide()
 	start_player_turn()
 	var enemy = BattleUnits.Enemy
 	if enemy != null:
@@ -41,6 +43,10 @@ func create_new_enemy():
 	enemy.connect("died", self, "_on_Enemy_died")
 
 func _on_Enemy_died():
+	var player = BattleUnits.PlayerStats
+	if player.xp >= player.max_xp:
+		levelUpButton.show()
+	yield(player, "leveled_up")
 	nextRoomButton.show()
 	battleActionButtons.hide()
 

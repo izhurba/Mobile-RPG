@@ -42,3 +42,7 @@ func _on_ResetButton_pressed():
 
 func _on_ConfirmButton_pressed():
 	pass # Replace with function body.
+
+
+func _on_LevelUpButton_pressed():
+	popup()

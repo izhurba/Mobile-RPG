@@ -11,6 +11,7 @@ var mp = max_mp setget set_mp
 var damage = 4 setget set_damage
 var level = 1 setget set_lvl
 var experience = 0 setget set_exp
+var maxExp = 25 setget set_max_exp
 var skillPoints = 0 setget set_sp
 
 signal hp_changed(value)
@@ -19,6 +20,7 @@ signal mp_changed(value)
 signal lvl_changed(value)
 signal exp_changed(value)
 signal sp_changed(value)
+signal leveled_up()
 signal end_turn
 
 func set_hp(value):
@@ -50,6 +52,14 @@ func set_damage(value):
 func set_exp(value):
 	experience = value
 	emit_signal("exp_changed", experience)
+	if experience >= maxExp:
+		level += 1
+		emit_signal("leveled_up")
+		emit_signal("lvl_changed")
+
+func set_max_exp(value):
+	maxExp = value
+	
 
 func set_lvl(value):
 	level = value
