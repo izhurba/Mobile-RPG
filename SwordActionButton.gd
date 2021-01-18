@@ -2,6 +2,12 @@ extends "res://ActionButton.gd"
 
 const Slash = preload("res://Slash.tscn")
 
+onready var info = $HoverInfo
+
+func _ready():
+	var player = BattleUnits.PlayerStats
+	info.description = "Sword\nDeals " + str(player.damage) + " damage"
+
 func _on_pressed():
 	var enemy = BattleUnits.Enemy
 	var playerStats = BattleUnits.PlayerStats

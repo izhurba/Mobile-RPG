@@ -266,102 +266,102 @@ texture = SubResource( 5 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
-margin_top = 4.0
-margin_right = -9.0
-margin_bottom = -3.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SPLabel" type="Label" parent="LevelUpPopup/LevelUp"]
-margin_right = 73.0
+margin_right = 74.0
 margin_bottom = 12.0
 align = 1
 
 [node name="HPup" type="HBoxContainer" parent="LevelUpPopup/LevelUp"]
 margin_top = 16.0
-margin_right = 73.0
-margin_bottom = 41.0
+margin_right = 74.0
+margin_bottom = 39.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HPcur" type="Label" parent="LevelUpPopup/LevelUp/HPup"]
-margin_right = 34.0
-margin_bottom = 25.0
+margin_right = 35.0
+margin_bottom = 23.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 align = 1
 
 [node name="incHP" type="Button" parent="LevelUpPopup/LevelUp/HPup"]
-margin_left = 38.0
-margin_right = 73.0
-margin_bottom = 25.0
+margin_left = 39.0
+margin_right = 74.0
+margin_bottom = 23.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "+5"
 
 [node name="APup" type="HBoxContainer" parent="LevelUpPopup/LevelUp"]
-margin_top = 45.0
-margin_right = 73.0
-margin_bottom = 70.0
+margin_top = 43.0
+margin_right = 74.0
+margin_bottom = 66.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="APcur" type="Label" parent="LevelUpPopup/LevelUp/APup"]
-margin_right = 34.0
-margin_bottom = 25.0
+margin_right = 35.0
+margin_bottom = 23.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 align = 1
 
 [node name="incAP" type="Button" parent="LevelUpPopup/LevelUp/APup"]
-margin_left = 38.0
-margin_right = 73.0
-margin_bottom = 25.0
+margin_left = 39.0
+margin_right = 74.0
+margin_bottom = 23.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "+1"
 
 [node name="MPup" type="HBoxContainer" parent="LevelUpPopup/LevelUp"]
-margin_top = 74.0
-margin_right = 73.0
-margin_bottom = 99.0
+margin_top = 70.0
+margin_right = 74.0
+margin_bottom = 93.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MPcur" type="Label" parent="LevelUpPopup/LevelUp/MPup"]
-margin_right = 34.0
-margin_bottom = 25.0
+margin_right = 35.0
+margin_bottom = 23.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 align = 1
 
 [node name="incMP" type="Button" parent="LevelUpPopup/LevelUp/MPup"]
-margin_left = 38.0
-margin_right = 73.0
-margin_bottom = 25.0
+margin_left = 39.0
+margin_right = 74.0
+margin_bottom = 23.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "+2"
 
 [node name="Finish" type="HBoxContainer" parent="LevelUpPopup/LevelUp"]
-margin_top = 103.0
-margin_right = 73.0
-margin_bottom = 129.0
+margin_top = 97.0
+margin_right = 74.0
+margin_bottom = 120.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ResetButton" type="Button" parent="LevelUpPopup/LevelUp/Finish"]
-margin_right = 34.0
-margin_bottom = 26.0
+margin_right = 35.0
+margin_bottom = 23.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "RESET"
 
 [node name="ConfirmButton" type="Button" parent="LevelUpPopup/LevelUp/Finish"]
-margin_left = 38.0
-margin_right = 73.0
-margin_bottom = 26.0
+margin_left = 39.0
+margin_right = 74.0
+margin_bottom = 23.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "CONFIRM"
