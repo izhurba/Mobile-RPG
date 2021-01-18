@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Slime.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Images/Mobile RPG Mockup.png" type="Texture" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://SwordActionButton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://HealActionButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Rat.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Images/player.png" type="Texture" id=11]
 [ext_resource path="res://TextboxPanel.gd" type="Script" id=12]
 [ext_resource path="res://LevelUpPopup.gd" type="Script" id=13]
 
@@ -194,6 +193,7 @@ margin_left = 3.0
 margin_top = 11.0
 margin_right = 89.0
 margin_bottom = 22.0
+max_value = 25.0
 step = 1.0
 percent_visible = false
 __meta__ = {
@@ -247,11 +247,13 @@ __meta__ = {
 anims/FadeToNewRoom = SubResource( 3 )
 
 [node name="LevelUpPopup" type="PopupPanel" parent="."]
+visible = true
 margin_right = 90.0
 margin_bottom = 136.0
 popup_exclusive = true
 script = ExtResource( 13 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -260,116 +262,106 @@ position = Vector2( 45.125, 68.5 )
 scale = Vector2( 0.0438232, 137 )
 texture = SubResource( 5 )
 
-[node name="Player" type="Sprite" parent="LevelUpPopup"]
-position = Vector2( 46, 29 )
-scale = Vector2( 0.0957031, 0.0957031 )
-texture = ExtResource( 11 )
-
 [node name="LevelUp" type="VBoxContainer" parent="LevelUpPopup"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
-margin_top = 8.0
-margin_right = -8.0
-margin_bottom = -8.0
+margin_top = 4.0
+margin_right = -9.0
+margin_bottom = -3.0
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="SPLabel" type="Label" parent="LevelUpPopup/LevelUp"]
-margin_right = 90.0
+margin_right = 73.0
 margin_bottom = 12.0
-text = "2 SKILL POINTS"
 align = 1
 
 [node name="HPup" type="HBoxContainer" parent="LevelUpPopup/LevelUp"]
 margin_top = 16.0
-margin_right = 90.0
-margin_bottom = 30.0
+margin_right = 73.0
+margin_bottom = 41.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HPcur" type="Label" parent="LevelUpPopup/LevelUp/HPup"]
-margin_right = 43.0
-margin_bottom = 14.0
+margin_right = 34.0
+margin_bottom = 25.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "HP"
 align = 1
 
 [node name="incHP" type="Button" parent="LevelUpPopup/LevelUp/HPup"]
-margin_left = 47.0
-margin_right = 90.0
-margin_bottom = 14.0
+margin_left = 38.0
+margin_right = 73.0
+margin_bottom = 25.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "+5"
 
 [node name="APup" type="HBoxContainer" parent="LevelUpPopup/LevelUp"]
-margin_top = 34.0
-margin_right = 90.0
-margin_bottom = 48.0
+margin_top = 45.0
+margin_right = 73.0
+margin_bottom = 70.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="APcur" type="Label" parent="LevelUpPopup/LevelUp/APup"]
-margin_right = 43.0
-margin_bottom = 14.0
+margin_right = 34.0
+margin_bottom = 25.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "AP"
 align = 1
 
 [node name="incAP" type="Button" parent="LevelUpPopup/LevelUp/APup"]
-margin_left = 47.0
-margin_right = 90.0
-margin_bottom = 14.0
+margin_left = 38.0
+margin_right = 73.0
+margin_bottom = 25.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "+1"
 
 [node name="MPup" type="HBoxContainer" parent="LevelUpPopup/LevelUp"]
-margin_top = 52.0
-margin_right = 90.0
-margin_bottom = 66.0
+margin_top = 74.0
+margin_right = 73.0
+margin_bottom = 99.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MPcur" type="Label" parent="LevelUpPopup/LevelUp/MPup"]
-margin_right = 43.0
-margin_bottom = 14.0
+margin_right = 34.0
+margin_bottom = 25.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "MP"
 align = 1
 
 [node name="incMP" type="Button" parent="LevelUpPopup/LevelUp/MPup"]
-margin_left = 47.0
-margin_right = 90.0
-margin_bottom = 14.0
+margin_left = 38.0
+margin_right = 73.0
+margin_bottom = 25.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "+2"
 
 [node name="Finish" type="HBoxContainer" parent="LevelUpPopup/LevelUp"]
-margin_top = 70.0
-margin_right = 90.0
-margin_bottom = 84.0
+margin_top = 103.0
+margin_right = 73.0
+margin_bottom = 129.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ResetButton" type="Button" parent="LevelUpPopup/LevelUp/Finish"]
-margin_right = 43.0
-margin_bottom = 14.0
+margin_right = 34.0
+margin_bottom = 26.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "RESET"
 
 [node name="ConfirmButton" type="Button" parent="LevelUpPopup/LevelUp/Finish"]
-margin_left = 47.0
-margin_right = 90.0
-margin_bottom = 14.0
+margin_left = 38.0
+margin_right = 73.0
+margin_bottom = 26.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "CONFIRM"

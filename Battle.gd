@@ -9,6 +9,7 @@ onready var animationPlayer = $AnimationPlayer
 onready var nextRoomButton = $UI/CenterContainer/NextRoomButton
 onready var levelUpButton = $UI/CenterContainer/LevelUpButton
 onready var enemyPosition = $EnemyPosition
+onready var levelUpPopup = $LevelUpPopup
 
 func _ready():
 	randomize()
@@ -43,10 +44,19 @@ func create_new_enemy():
 	enemy.connect("died", self, "_on_Enemy_died")
 
 func _on_Enemy_died():
+	var enemy = BattleUnits.Enemy
 	var player = BattleUnits.PlayerStats
-	if player.xp >= player.max_xp:
+	player.experience += enemy.expVal
+	if player.experience >= player.maxExp:
+		levelUpPopup.spLabel.text = "2 Skill Points"
+		player.level += 1
+		player.experience -= player.maxExp
 		levelUpButton.show()
-	yield(player, "leveled_up")
+		yield(levelUpPopup, "levelUpDone")
+		levelUpButton.hide()
+		player.hp = player.max_hp
+		player.ap = player.max_ap
+		player.mp = player.max_mp
 	nextRoomButton.show()
 	battleActionButtons.hide()
 

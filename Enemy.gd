@@ -4,7 +4,7 @@ const BattleUnits = preload("res://BattleUnits.tres")
 
 export(int) var hp = 25 setget set_hp
 export(int) var damage = 4 
-export(int) var expVal = 3 
+var expVal = 10
 
 onready var hpLabel = $HPLabel
 onready var animationPlayer = $AnimationPlayer
