@@ -24,7 +24,6 @@ func _ready():
 	mpCurLabel.text = "MP" + str(player.max_mp)
 
 func _on_incHP_pressed():
-	var player = BattleUnits.PlayerStats
 	if tempSP >= 1:
 		tempHP += 5
 		hpCurLabel.text = "HP" + str(tempHP)
@@ -34,7 +33,6 @@ func _on_incHP_pressed():
 		pass
 
 func _on_incAP_pressed():
-	var player = BattleUnits.PlayerStats
 	if tempSP >= 1:
 		tempAP += 1
 		apCurLabel.text = "AP" + str(tempAP)
@@ -44,7 +42,6 @@ func _on_incAP_pressed():
 		pass
 
 func _on_incMP_pressed():
-	var player = BattleUnits.PlayerStats
 	if tempSP >= 1:
 		tempMP += 2
 		mpCurLabel.text = "MP" + str(tempMP)

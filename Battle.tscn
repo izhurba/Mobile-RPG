@@ -1,14 +1,14 @@
 [gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://Slime.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Enemies/Slime.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Images/Mobile RPG Mockup.png" type="Texture" id=2]
 [ext_resource path="res://Images/Dungeon.png" type="Texture" id=3]
 [ext_resource path="res://Battle.gd" type="Script" id=4]
 [ext_resource path="res://PlayerStats.gd" type="Script" id=5]
 [ext_resource path="res://StatsPanel.gd" type="Script" id=6]
-[ext_resource path="res://SwordActionButton.tscn" type="PackedScene" id=7]
-[ext_resource path="res://HealActionButton.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Rat.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Actions/AttackButton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Actions/HealButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemies/Rat.tscn" type="PackedScene" id=9]
 [ext_resource path="res://TextboxPanel.gd" type="Script" id=12]
 [ext_resource path="res://LevelUpPopup.gd" type="Script" id=13]
 
@@ -222,12 +222,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SwordActionButton" parent="UI/BattleActionButtons" instance=ExtResource( 7 )]
+[node name="AttackButton" parent="UI/BattleActionButtons" instance=ExtResource( 7 )]
 margin_right = 32.0
 margin_bottom = 13.0
-text = "SWORD"
+text = "ATTACK"
 
-[node name="HealActionButton" parent="UI/BattleActionButtons" instance=ExtResource( 8 )]
+[node name="HealButton" parent="UI/BattleActionButtons" instance=ExtResource( 8 )]
 margin_left = 40.0
 margin_right = 72.0
 margin_bottom = 13.0

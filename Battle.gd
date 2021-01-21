@@ -5,7 +5,6 @@ const BattleUnits = preload("res://BattleUnits.tres")
 export(Array, PackedScene) var enemies = []
 
 onready var battleActionButtons = $UI/BattleActionButtons
-onready var damageButton = $UI/BattleActionButtons/SwordActionButton/HoverInfo
 onready var animationPlayer = $AnimationPlayer
 onready var nextRoomButton = $UI/CenterContainer/NextRoomButton
 onready var levelUpButton = $UI/CenterContainer/LevelUpButton
