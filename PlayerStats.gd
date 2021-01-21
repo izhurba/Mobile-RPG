@@ -8,7 +8,7 @@ var max_ap = 3 setget set_max_ap
 var ap = max_ap setget set_ap
 var max_mp = 10 setget set_max_mp
 var mp = max_mp setget set_mp
-var damage = 10 setget set_damage
+var damage = 5 setget set_damage
 var level = 1 setget set_lvl
 var experience = 0 setget set_exp
 var maxExp = 25 setget set_max_exp
@@ -20,11 +20,14 @@ signal mp_changed(value)
 signal lvl_changed(value)
 signal exp_changed(value)
 signal sp_changed(value)
+signal died
 signal end_turn
 
 func set_hp(value):
 	hp = clamp(value, 0, max_hp)
 	emit_signal("hp_changed", hp)
+	if hp <= 0:
+		emit_signal("died")
 
 func set_max_hp(value):
 	max_hp = value

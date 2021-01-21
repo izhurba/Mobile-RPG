@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Enemies/Slime.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Images/Mobile RPG Mockup.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Actions/AttackButton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Actions/HealButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Enemies/Rat.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Actions/XHealButton.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Actions/XAttackButton.tscn" type="PackedScene" id=11]
 [ext_resource path="res://TextboxPanel.gd" type="Script" id=12]
 [ext_resource path="res://LevelUpPopup.gd" type="Script" id=13]
 
@@ -30,6 +32,23 @@ tracks/0/keys = {
 [sub_resource type="StyleBoxEmpty" id=2]
 
 [sub_resource type="Animation" id=3]
+resource_name = "FadeToDied"
+length = 0.8
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fade2Died:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 0, 0, 0, 0.588235 ), Color( 0, 0, 0, 0.776471 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
 length = 0.5
 step = 0.05
 tracks/0/type = "value"
@@ -45,12 +64,12 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Gradient" id=4]
+[sub_resource type="Gradient" id=5]
 offsets = PoolRealArray( 0, 0.996644, 1 )
 colors = PoolColorArray( 0, 0, 0, 1, 0.147651, 0.147651, 0.147651, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=5]
-gradient = SubResource( 4 )
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
 
 [node name="Battle" type="Node"]
 script = ExtResource( 4 )
@@ -223,14 +242,27 @@ __meta__ = {
 }
 
 [node name="AttackButton" parent="UI/BattleActionButtons" instance=ExtResource( 7 )]
-margin_right = 32.0
+margin_right = 34.0
 margin_bottom = 13.0
 text = "ATTACK"
 
 [node name="HealButton" parent="UI/BattleActionButtons" instance=ExtResource( 8 )]
-margin_left = 40.0
-margin_right = 72.0
+margin_left = 42.0
+margin_right = 74.0
 margin_bottom = 13.0
+
+[node name="XAttackButton" parent="UI/BattleActionButtons" instance=ExtResource( 11 )]
+margin_top = 16.0
+margin_right = 34.0
+margin_bottom = 29.0
+text = "X.ATTACK"
+
+[node name="XHealButton" parent="UI/BattleActionButtons" instance=ExtResource( 10 )]
+margin_left = 42.0
+margin_top = 16.0
+margin_right = 74.0
+margin_bottom = 29.0
+text = "X.HEAL"
 
 [node name="Fade" type="ColorRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -243,11 +275,42 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Fade2Died" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="DiedLabel" type="Label" parent="."]
+margin_top = 45.0
+margin_right = 90.0
+margin_bottom = 58.0
+text = "YOU DIED"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Restart" type="Button" parent="."]
+margin_left = 27.0
+margin_top = 61.0
+margin_right = 61.0
+margin_bottom = 73.0
+text = "RESTART"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/FadeToNewRoom = SubResource( 3 )
+anims/FadeToDied = SubResource( 3 )
+anims/FadeToNewRoom = SubResource( 4 )
 
 [node name="LevelUpPopup" type="PopupPanel" parent="."]
-visible = true
 margin_right = 90.0
 margin_bottom = 136.0
 popup_exclusive = true
@@ -260,7 +323,7 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="LevelUpPopup"]
 position = Vector2( 45.125, 68.5 )
 scale = Vector2( 0.0438232, 137 )
-texture = SubResource( 5 )
+texture = SubResource( 6 )
 
 [node name="LevelUp" type="VBoxContainer" parent="LevelUpPopup"]
 anchor_right = 1.0
@@ -372,6 +435,7 @@ text = "CONFIRM"
 [connection signal="mp_changed" from="PlayerStats" to="UI/StatsPanel" method="_on_PlayerStats_mp_changed"]
 [connection signal="pressed" from="UI/CenterContainer/NextRoomButton" to="." method="_on_NextRoomButton_pressed"]
 [connection signal="pressed" from="UI/CenterContainer/LevelUpButton" to="LevelUpPopup" method="_on_LevelUpButton_pressed"]
+[connection signal="pressed" from="Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="LevelUpPopup/LevelUp/HPup/incHP" to="LevelUpPopup" method="_on_incHP_pressed"]
 [connection signal="pressed" from="LevelUpPopup/LevelUp/APup/incAP" to="LevelUpPopup" method="_on_incAP_pressed"]
 [connection signal="pressed" from="LevelUpPopup/LevelUp/MPup/incMP" to="LevelUpPopup" method="_on_incMP_pressed"]
